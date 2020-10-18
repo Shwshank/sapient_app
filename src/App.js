@@ -14,7 +14,7 @@ function App() {
   // cicd test 1
   return (
     <div className='App'>
-      <h3>SpaceX launch programs</h3>
+      <h3>SpaceX launch program </h3>
       <div className=" container">
         <div className="row justify-content-md-center">
           <Filter/>
