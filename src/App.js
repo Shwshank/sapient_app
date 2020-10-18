@@ -13,7 +13,7 @@ import DisplayAssets from './components/DisplayAssets'
 function App() {
   return (
     <div className='App'>
-      <h3>SpaceX launch program </h3>
+      <h3>SpaceX launch programs</h3>
       <div className=" container">
         <div className="row justify-content-md-center">
           <Filter/>
