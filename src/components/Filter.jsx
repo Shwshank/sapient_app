@@ -3,6 +3,12 @@ import { useHistory } from "react-router-dom";
 
 const Filter =()=>{
 
+  /*
+  *
+  * Initialize
+  *
+  */
+
   const yearAndStatus = [
     {name: '2006', selected: false},
     {name: '2007', selected: false},
@@ -37,12 +43,23 @@ const Filter =()=>{
     launch: '/notSelected',
   }
 
+  /*
+  *
+  * Set States
+  *
+  */
+
   const [urlParams, setUrlParams] = useState(params);
   const [yearButtons, setYearButtons] = useState([...yearAndStatus])
   const [launchButtons, setlaunchButtons] = useState([...successfulLaunchStatus])
   const [landingButtons, setLandingButtons] = useState([...successfulLandingStatus])
+  const history = useHistory();
 
-  let history = useHistory();
+  /*
+  *
+  * Toggle year button actoin
+  *
+  */
 
   const toggleYearButton = (buttonStatus, index) =>{
     let tempYearAndStatus = [...yearAndStatus];
@@ -55,6 +72,12 @@ const Filter =()=>{
     }
   }
 
+  /*
+  *
+  * Toggle launch button
+  *
+  */
+
   const toggleLaunchButton = (buttonStatus, index) =>{
     let tempLaunchStatus = [...successfulLaunchStatus];
     tempLaunchStatus[index] = {...buttonStatus, selected:!buttonStatus.selected}
@@ -66,6 +89,12 @@ const Filter =()=>{
     }
   }
 
+  /*
+  *
+  * Toggle landind button
+  *
+  */
+
   const toggleLandingButton = (buttonStatus, index) =>{
     let tempLandingStatus = [...successfulLandingStatus];
     tempLandingStatus[index] = {...buttonStatus, selected:!buttonStatus.selected}
@@ -76,6 +105,12 @@ const Filter =()=>{
       updateQueryParams('landing', '/notSelected')
     }
   }
+
+  /*
+  *
+  * Navigation and state update, for all buttons
+  *
+  */
 
   const updateQueryParams = (key, value) =>{
     let tempUrl = {...urlParams}

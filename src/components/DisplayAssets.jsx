@@ -5,18 +5,27 @@ import { useParams, useHistory } from "react-router-dom";
 
 const DisplayAssets =()=>{
 
-  const [spaceData, setSpaceData] = useState([])
-
+  /*
+  *
+  * Initialize
+  *
+  */
   let { launch, landing, year } = useParams();
-
+  const [spaceData, setSpaceData] = useState([])
   const [queryParams, setQueryParams ] = useState({year:'', launch:'', landing:''})
-
   const [refreshFlag, setRefreshFlag] = useState('flag')
-
   const [dataNotAval, setDataNotAval] = useState(false)
+
+  /*
+  *
+  * Get params and update get object
+  *
+  */
+
   useEffect(()=>{
     let temp = {...queryParams}
 
+    // Get year data
     if(year)
     if(year === 'notSelected'){
       temp.year = '';
@@ -24,6 +33,7 @@ const DisplayAssets =()=>{
       temp.year = '&launch_year='+year;
     }
 
+    // Get launch data
     if(launch)
     if(launch !== 'notSelected'){
       if(launch === 'True'){
@@ -35,6 +45,7 @@ const DisplayAssets =()=>{
       temp.launch = '';
     }
 
+    // Get landing data
     if(landing)
     if(landing !== 'notSelected'){
       if(landing === 'True'){
@@ -46,17 +57,33 @@ const DisplayAssets =()=>{
       temp.landing = '';
     }
 
+    // update object as per params received
     setQueryParams(temp)
   },[year, landing, launch]);
+
+  /*
+  *
+  * convert obj values to an array
+  *
+  */
 
   useEffect(()=>{
     let tempQuery = Object.values(queryParams).join('')
     getData(tempQuery);
   }, [queryParams])
 
+  /*
+  *
+  * set http request url
+  *
+  */
+
   const getData = (tempQuery='') =>{
 
+    // refreshFlag is last recent http url send to server
     if(tempQuery!==refreshFlag){
+      // if last url and current are not same then only make http call
+
       setSpaceData([])
       setDataNotAval(false)
       Service.getData(tempQuery).then(response=>{
@@ -65,6 +92,7 @@ const DisplayAssets =()=>{
         } else {
           setDataNotAval(true)
         }
+        // update last http url
         setRefreshFlag(tempQuery)
       });
     }

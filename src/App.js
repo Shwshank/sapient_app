@@ -5,16 +5,15 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 
 import Filter from './components/Filter'
 import DisplayAssets from './components/DisplayAssets'
 
 function App() {
-  // cicd test 1
+
   return (
-    <div className='App'>
-      <h3>SpaceX launch program </h3>
+    <div className='App' data-test="appComponent">
+      <h3>SpaceX launch programs </h3>
       <div className=" container">
         <div className="row justify-content-md-center">
           <Filter/>
