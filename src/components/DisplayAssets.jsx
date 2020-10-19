@@ -107,11 +107,11 @@ const DisplayAssets =()=>{
         spaceData.length>0? spaceData.map(data=>{
 
           return(
-            <div className="card col-lg-3 col-md-5 col-sm-8" style={{minWidth: "100px", margin: 'auto'}} key = {data.flight_number}>
+            <div className="card col-lg-3 col-md-5 col-sm-8 displayContainer" key = {data.flight_number}>
 
               <img className="card-img-top" src={data.links.mission_patch_small} alt=""/>
               <div className="card-body">
-                <h5 className="card-title" style={{color: "#5B639B"}}> <b> {data.mission_name} # {data.flight_number} </b> </h5>
+                <h5 className="card-title"> <b> {data.mission_name} # {data.flight_number} </b> </h5>
                 <p style={{textAlign: "left"}}><b>Mission Id </b><br/> <b>* </b>{data.links.youtube_id}</p>
 
                 <div>
@@ -123,7 +123,14 @@ const DisplayAssets =()=>{
                 <div>
                   <div className='cardBoxLeft'><b> Successful launch </b> </div>
                   <div className='cardBoxRight'>
-                    {data.launch_success? 'True' : 'False'}
+                    {data.launch_success? 'True' : 'False'}<br/> &nbsp;
+                  </div>
+                </div>
+
+                <div>
+                  <div className='cardBoxLeft'><b> Successful landing </b> </div>
+                  <div className='cardBoxRight'>
+                    {data?.rocket?.first_stage?.cores[0]?.land_success? 'True' : 'False'}
                   </div>
                 </div>
 
