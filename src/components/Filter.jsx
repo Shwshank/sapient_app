@@ -120,7 +120,7 @@ const Filter =()=>{
   }
 
   return (
-    <div className='col-lg-2 col-sm-8 '>
+    <div className='col-lg-2 col-sm-12 ' >
       <div className='filterBox'>
         <p> <b> Filters </b> </p>
         <p>Launch Year</p>

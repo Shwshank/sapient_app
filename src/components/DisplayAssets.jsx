@@ -107,7 +107,7 @@ const DisplayAssets =()=>{
         spaceData.length>0? spaceData.map(data=>{
 
           return(
-            <div className="card col-lg-3 col-md-5 col-sm-8" style={{minWidth: "100px", margin: '10px'}} key = {data.flight_number}>
+            <div className="card col-lg-3 col-md-5 col-sm-8" style={{minWidth: "100px", margin: 'auto'}} key = {data.flight_number}>
 
               <img className="card-img-top" src={data.links.mission_patch_small} alt=""/>
               <div className="card-body">
